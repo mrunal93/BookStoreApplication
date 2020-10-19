@@ -2,7 +2,8 @@
 
 namespace ModelLayerBookStore
 {
-    public class Class1
+    public class BooksDetailsModel
     {
+
     }
 }
