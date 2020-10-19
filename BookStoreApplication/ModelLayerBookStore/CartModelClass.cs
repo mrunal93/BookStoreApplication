@@ -6,6 +6,6 @@ namespace ModelLayerBookStore
 {
     public class CartModelClass
     {
-
+     
     }
 }
