@@ -28,14 +28,14 @@ namespace RepositoryLayerBookStore
             {
                 SqlCommand sqlCommand = new SqlCommand("GetBookCart", sqlConnection);
                 sqlCommand.CommandType = CommandType.StoredProcedure;
-                sqlCommand.Parameters.AddWithValue("@cartId", cart.CardId);
+                sqlCommand.Parameters.AddWithValue("@cartId", cart.WhishListId);
                 sqlConnection.Open();
                 SqlDataReader sqlDataReader = sqlCommand.ExecuteReader();
 
                 while (sqlDataReader.Read())
                 {
-                    cart.Quantity = Convert.ToInt32(sqlDataReader["Quantity"]);
-                    cart.TotalPrice = Convert.ToInt32(sqlDataReader["TotalPrice"]);
+                    cart.BookId = Convert.ToInt32(sqlDataReader["Quantity"]);
+                    cart.WhishListId = Convert.ToInt32(sqlDataReader["TotalPrice"]);
                 }
                 return cart;
             }

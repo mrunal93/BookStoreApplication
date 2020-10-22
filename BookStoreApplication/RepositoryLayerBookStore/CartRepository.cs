@@ -35,7 +35,7 @@ namespace RepositoryLayerBookStore
                 while (sqlDataReader.Read())
                 {
                     cart.Quantity = Convert.ToInt32(sqlDataReader["Quantity"]);
-                    cart.TotalPrice = Convert.ToInt32(sqlDataReader["TotalPrice"]);
+                    cart.BookId = Convert.ToInt32(sqlDataReader["TotalPrice"]);
                 }
                 return cart;
             }
