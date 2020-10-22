@@ -4,9 +4,10 @@ using System.Text;
 
 namespace ModelLayerBookStore
 {
-    public class CartModelClass
+    public class OrderSummaryModelClass
     {
-        public int Quantity { get; set; }
+        public int CardId { get; set; }
+        public int OrderNumber { get; set; }
         public int TotalPrice { get; set; }
     }
 }
