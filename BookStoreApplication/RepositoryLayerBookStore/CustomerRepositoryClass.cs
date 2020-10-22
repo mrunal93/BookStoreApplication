@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.Configuration;
 using ModelLayerBookStore;
 using System;
+using System.Data;
 using System.Data.SqlClient;
 
 namespace RepositoryLayerBookStore
@@ -21,8 +22,63 @@ namespace RepositoryLayerBookStore
 
         public CustomerRegistrationModelClass AddCustomerDetails (CustomerRegistrationModelClass customer)
         {
-            SqlCommand sqlCommand = new SqlCommand("sp_AddCustomerDetails",sqlConnection);
-            return
+            try
+            {
+                SqlCommand sqlCommand = new SqlCommand("sp_AddCustomerDetails", sqlConnection);
+                sqlCommand.CommandType = CommandType.StoredProcedure;
+                sqlCommand.Parameters.AddWithValue("@name", customer.Name);
+                sqlCommand.Parameters.AddWithValue("@PhoneNumber", customer.PhoneNumber);
+                sqlCommand.Parameters.AddWithValue("@Address", customer.Address);
+                sqlCommand.Parameters.AddWithValue("@pinCode", customer.PinCode);
+                sqlCommand.Parameters.AddWithValue("@Email", customer.Email);
+                sqlCommand.Parameters.AddWithValue("@type", customer.Type);
+                sqlCommand.Parameters.AddWithValue("@landMark", customer.LandMark);
+                sqlCommand.Parameters.AddWithValue("@city", customer.City);
+                sqlConnection.Open();
+                sqlCommand.ExecuteNonQuery();
+                sqlConnection.Close();
+                return customer;
+            }
+            catch (Exception e)
+            {
+
+                throw new Exception("Customer Detail not Added" + e);
+            }
+            finally
+            {
+                sqlConnection.Close();
+            }
+        }
+
+        public CustomerRegistrationModelClass UpdateCustomerDetail (CustomerRegistrationModelClass customer)
+        {
+
+            try
+            {
+                SqlCommand sqlCommand = new SqlCommand("sp_AddCustomerDetails", sqlConnection);
+                sqlCommand.CommandType = CommandType.StoredProcedure;
+                sqlCommand.Parameters.AddWithValue("@name", customer.Name);
+                sqlCommand.Parameters.AddWithValue("@PhoneNumber", customer.PhoneNumber);
+                sqlCommand.Parameters.AddWithValue("@Address", customer.Address);
+                sqlCommand.Parameters.AddWithValue("@pinCode", customer.PinCode);
+                sqlCommand.Parameters.AddWithValue("@Email", customer.Email);
+                sqlCommand.Parameters.AddWithValue("@type", customer.Type);
+                sqlCommand.Parameters.AddWithValue("@landMark", customer.LandMark);
+                sqlCommand.Parameters.AddWithValue("@city", customer.City);
+                sqlConnection.Open();
+                sqlCommand.ExecuteNonQuery();
+                sqlConnection.Close();
+                return customer;
+            }
+            catch (Exception e)
+            {
+
+                throw new Exception("Customer Detail not Added" + e);
+            }
+            finally
+            {
+                sqlConnection.Close();
+            }
         }
     }
 }
