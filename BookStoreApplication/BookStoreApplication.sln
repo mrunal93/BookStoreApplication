@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30413.136
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookStoreApplication", "BookStoreApplication\BookStoreApplication.csproj", "{6EF660FD-3E54-4344-8271-4027FA6262B2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookStoreApplication", "BookStoreApplication\BookStoreApplication.csproj", "{6EF660FD-3E54-4344-8271-4027FA6262B2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModelLayerBookStore", "ModelLayerBookStore\ModelLayerBookStore.csproj", "{4EA6EE8D-95E7-4C81-A406-F485CA8E962B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ModelLayerBookStore", "ModelLayerBookStore\ModelLayerBookStore.csproj", "{4EA6EE8D-95E7-4C81-A406-F485CA8E962B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RepositoryLayerBookStore", "RepositoryLayerBookStore\RepositoryLayerBookStore.csproj", "{8A939C8C-9035-4E37-9B68-114C5B186FFC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{4EA6EE8D-95E7-4C81-A406-F485CA8E962B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4EA6EE8D-95E7-4C81-A406-F485CA8E962B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4EA6EE8D-95E7-4C81-A406-F485CA8E962B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8A939C8C-9035-4E37-9B68-114C5B186FFC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8A939C8C-9035-4E37-9B68-114C5B186FFC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8A939C8C-9035-4E37-9B68-114C5B186FFC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8A939C8C-9035-4E37-9B68-114C5B186FFC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
