@@ -8,7 +8,7 @@ using System.Text;
 
 namespace RepositoryLayerBookStore
 {
-    public class LoginRepository
+    public class LoginRepository : ILoginRepository
     {
         private readonly IConfiguration configuration;
         private readonly string connectionString;

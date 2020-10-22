@@ -8,13 +8,13 @@ using System.Text;
 
 namespace RepositoryLayerBookStore
 {
-    public class CartRepository : ICartRepository
+    public class WishListRepository : IWishListRepository
     {
         private readonly IConfiguration configuration;
         private readonly string connectionString;
         private readonly SqlConnection sqlConnection;
 
-        public CartRepository(IConfiguration configuration)
+        public WishListRepository(IConfiguration configuration)
         {
 
             this.configuration = configuration;
@@ -22,7 +22,7 @@ namespace RepositoryLayerBookStore
             this.sqlConnection = new SqlConnection(this.connectionString);
         }
 
-        public CartModelClass BookCart (CartModelClass cart)
+        public WishListModelClass BookCart(WishListModelClass cart)
         {
             try
             {

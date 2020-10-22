@@ -6,6 +6,7 @@ namespace ModelLayerBookStore
 {
     public class CartModelClass
     {
+        public int CardId { get; set; }
         public int Quantity { get; set; }
         public int TotalPrice { get; set; }
     }

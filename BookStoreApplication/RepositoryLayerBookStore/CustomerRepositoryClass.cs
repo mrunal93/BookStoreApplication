@@ -6,7 +6,7 @@ using System.Data.SqlClient;
 
 namespace RepositoryLayerBookStore
 {
-    public class CustomerRepositoryClass
+    public class CustomerRepositoryClass :ICustomerRepository
     {
         private readonly IConfiguration configuration;
         private readonly string connectionString;
