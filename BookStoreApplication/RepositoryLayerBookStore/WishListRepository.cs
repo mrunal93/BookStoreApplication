@@ -26,7 +26,7 @@ namespace RepositoryLayerBookStore
         {
             try
             {
-                SqlCommand sqlCommand = new SqlCommand("GetBookCart", sqlConnection);
+                SqlCommand sqlCommand = new SqlCommand("sp_WishList", sqlConnection);
                 sqlCommand.CommandType = CommandType.StoredProcedure;
                 sqlCommand.Parameters.AddWithValue("@cartId", cart.WhishListId);
                 sqlConnection.Open();

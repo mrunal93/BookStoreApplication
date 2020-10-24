@@ -1,10 +1,27 @@
-﻿using System;
+﻿using ModelLayerBookStore;
+using RepositoryLayerBookStore;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace BookStoreManagerLayer
 {
-    class LoginManager
+    public class LoginManager : ILoginManager
     {
+        public readonly ILoginRepository loginRepository;
+        public LoginManager(ILoginRepository loginRepository)
+        {
+            this.loginRepository = loginRepository;
+        }
+
+        public LoginModelClass AddLoginDetails(LoginModelClass login)
+        {
+            return loginRepository.AddLoginDetails(login);
+        }
+
+        public LoginModelClass UpdateLoginUser(LoginModelClass login)
+        {
+            return loginRepository.UpdateLoginUser(login);
+        }
     }
 }

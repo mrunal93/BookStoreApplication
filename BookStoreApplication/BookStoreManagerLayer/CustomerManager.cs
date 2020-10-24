@@ -4,7 +4,7 @@ using System;
 
 namespace BookStoreManagerLayer
 {
-    public class CustomerManager
+    public class CustomerManager : ICustomerManager
     {
         public readonly ICustomerRepository customerRepository;
         public CustomerManager(ICustomerRepository customerRepository)
