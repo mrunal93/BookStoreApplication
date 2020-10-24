@@ -14,28 +14,28 @@ namespace BookStoreApplication.Controllers
     [Authorize]
     [Route("api/[controller]")]
     [ApiController]
-    public class CustomerDetails : ControllerBase
+    public class BookController : ControllerBase
     {
-        public readonly ICustomerManager customerManager;
-        
-        public CustomerDetails (ICustomerManager customerManager)
+        public readonly IBookDetailsManager bookDetailsManager;
+
+        public BookController(IBookDetailsManager bookDetailsManager)
         {
-            this.customerManager = customerManager;
+            this.bookDetailsManager = bookDetailsManager;
         }
 
         [HttpPost]
-        [Route("AddCustomerDetails")]
-        public IActionResult AddCustomerDetails(CustomerRegistrationModelClass customer)
+        [Route("AddBookDetails")]
+        public IActionResult AddCustomerDetails(BooksDetailsModel customer)
         {
-            var CustomerResult = this.customerManager.AddCustomerDetails(customer);
+            var BookResult = this.bookDetailsManager.AddBookDetails(customer);
 
             try
             {
-                if (CustomerResult != null)
+                if (BookResult != null)
                 {
-                    return this.Ok(new Response(HttpStatusCode.OK, "The Customer Data", CustomerResult));
+                    return this.Ok(new Response(HttpStatusCode.OK, "The Customer Data", BookResult));
                 }
-                return this.NotFound(new Response(HttpStatusCode.NotFound, "customer Data Not Found", CustomerResult));
+                return this.NotFound(new Response(HttpStatusCode.NotFound, "customer Data Not Found", BookResult));
             }
             catch (Exception)
             {
@@ -44,10 +44,10 @@ namespace BookStoreApplication.Controllers
         }
 
         [HttpPut]
-        [Route("UpdateCustomer")]
-        public IActionResult UpdateCustomerDetails(CustomerRegistrationModelClass customer)
+        [Route("UpdateBooksDetails")]
+        public IActionResult UpdateCustomerDetails(BooksDetailsModel customer)
         {
-            var CustomerResult = this.customerManager.UpdateCustomerDetail(customer);
+            var CustomerResult = this.bookDetailsManager.UpdateBookDetails(customer);
 
             try
             {
