@@ -23,5 +23,10 @@ namespace BookStoreManagerLayer
         {
             return loginRepository.UpdateLoginUser(login);
         }
+
+        public string GenerateToken(LoginModelClass login, string type)
+        {
+            return loginRepository.GenerateToken(login, type);
+        }
     }
 }

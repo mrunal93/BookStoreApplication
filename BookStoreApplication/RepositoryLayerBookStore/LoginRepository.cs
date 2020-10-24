@@ -1,8 +1,12 @@
 ﻿using Microsoft.Extensions.Configuration;
+using Microsoft.IdentityModel.Tokens;
 using ModelLayerBookStore;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.IdentityModel.Tokens;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 
@@ -44,7 +48,6 @@ namespace RepositoryLayerBookStore
             }
             catch (Exception e)
             {
-
                 throw new Exception("Login Details Added" + e);
             }
             finally
@@ -67,12 +70,34 @@ namespace RepositoryLayerBookStore
             }
             catch (Exception e)
             {
-
                 throw new Exception("Login Details Added" + e);
             }
             finally
             {
                 sqlConnection.Close();
+            }
+        }
+        public string GenerateToken(LoginModelClass login, string type)
+        {
+            try
+            {
+                var symmetricSecuritykey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["Jwt:Key"]));
+
+                var signingCreds = new SigningCredentials(symmetricSecuritykey, SecurityAlgorithms.HmacSha256);
+
+                var claims = new List<Claim>();
+                claims.Add(new Claim("Email", login.Email.ToString()));
+                claims.Add(new Claim("Password", login.Password.ToString()));
+                var token = new JwtSecurityToken(configuration["Jwt:Issuer"],
+                    configuration["Jwt:Issuer"],
+                    claims,
+                    expires: DateTime.Now.AddHours(120),
+                    signingCredentials: signingCreds);
+                return new JwtSecurityTokenHandler().WriteToken(token);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
             }
         }
 
