@@ -21,13 +21,22 @@ namespace RepositoryLayerBookStore
             this.sqlConnection = new SqlConnection(this.connectionString);
         }
 
+        public string EncodePassword(string password)
+        {
+            byte[] encPassword = new byte[password.Length];
+            encPassword = Encoding.UTF8.GetBytes(password);
+            string encodedPassword = Convert.ToBase64String(encPassword);
+            return encodedPassword;
+        }
+
         public LoginModelClass AddLoginDetails (LoginModelClass login)
         {
             try
             {
+                var encodePassword = this.EncodePassword(login.Password);
                 SqlCommand sqlCommand = new SqlCommand("sp_AddUserLogin", sqlConnection);
                 sqlCommand.Parameters.AddWithValue("@Email", login.Email);
-                sqlCommand.Parameters.AddWithValue("@password", login.Password);
+                sqlCommand.Parameters.AddWithValue("@password", encodePassword);
                 sqlConnection.Open();
                 sqlCommand.ExecuteNonQuery();
                 sqlConnection.Close();
