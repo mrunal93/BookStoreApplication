@@ -7,6 +7,9 @@ namespace RepositoryLayerBookStore
 {
     public interface ICartRepository
     {
-        CartModelClass BookCart(CartModelClass cart);
+        CartModelClass GetBookCart(CartModelClass cart);
+        CartModelClass DeleteCart(CartModelClass whis);
+        CartModelClass AddCart(CartModelClass whis);
+        CartModelClass UpdateCart(CartModelClass whis);
     }
 }

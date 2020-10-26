@@ -22,7 +22,7 @@ namespace RepositoryLayerBookStore
             this.sqlConnection = new SqlConnection(this.connectionString);
         }
 
-        public WishListModelClass BookCart(WishListModelClass cart)
+        public WishListModelClass GetWhishList(WishListModelClass cart)
         {
             try
             {
@@ -43,6 +43,74 @@ namespace RepositoryLayerBookStore
             {
 
                 throw new Exception("Value is not able to read" + e);
+            }
+            finally
+            {
+                sqlConnection.Close();
+            }
+        }
+        
+       
+
+        public WishListModelClass UpdateWhishList(WishListModelClass whis)
+        {
+            try
+            {
+                SqlCommand sqlCommand = new SqlCommand("sp_UpdateWishList", sqlConnection);
+                sqlCommand.Parameters.AddWithValue("@Bookid", whis.BookId);
+                sqlCommand.Parameters.AddWithValue("@Whisid", whis.WhishListId);
+
+                sqlConnection.Open();
+                sqlCommand.ExecuteNonQuery();
+                sqlConnection.Close();
+                return whis;
+            }
+            catch (Exception e)
+            {
+                throw new Exception("WishList not Details Added" + e);
+            }
+            finally
+            {
+                sqlConnection.Close();
+            }
+        }
+
+        public WishListModelClass AddWhishList(WishListModelClass whis)
+        {
+            try
+            {
+                SqlCommand sqlCommand = new SqlCommand("sp_AddWishList", sqlConnection);
+                sqlCommand.Parameters.AddWithValue("@Bookid", whis.BookId);
+                sqlConnection.Open();
+                sqlCommand.ExecuteNonQuery();
+                sqlConnection.Close();
+                return whis;
+            }
+            catch (Exception e)
+            {
+                throw new Exception("WishList not Details Added" + e);
+            }
+            finally
+            {
+                sqlConnection.Close();
+            }
+        }
+
+        public WishListModelClass DeleteWhishList(WishListModelClass whis)
+        {
+            try
+            {
+                SqlCommand sqlCommand = new SqlCommand("sp_DeleteWishList", sqlConnection);
+                sqlCommand.Parameters.AddWithValue("@whisid", whis.WhishListId);
+
+                sqlConnection.Open();
+                sqlCommand.ExecuteNonQuery();
+                sqlConnection.Close();
+                return whis;
+            }
+            catch (Exception e)
+            {
+                throw new Exception("WishList not Details Added" + e);
             }
             finally
             {

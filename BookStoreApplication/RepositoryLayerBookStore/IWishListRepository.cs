@@ -5,8 +5,12 @@ using System.Text;
 
 namespace RepositoryLayerBookStore
 {
-   public interface IWishListRepository
+    public interface IWishListRepository
     {
-        WishListModelClass BookCart(WishListModelClass cart);
+        WishListModelClass GetWhishList(WishListModelClass cart);
+        WishListModelClass AddWhishList(WishListModelClass whis);
+        WishListModelClass UpdateWhishList(WishListModelClass whis);
+        WishListModelClass DeleteWhishList(WishListModelClass whis);
     }
+        
 }

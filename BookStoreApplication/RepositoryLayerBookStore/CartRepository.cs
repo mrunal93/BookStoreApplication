@@ -22,7 +22,7 @@ namespace RepositoryLayerBookStore
             this.sqlConnection = new SqlConnection(this.connectionString);
         }
 
-        public CartModelClass BookCart (CartModelClass cart)
+        public CartModelClass GetBookCart (CartModelClass cart)
         {
             try
             {
@@ -35,7 +35,7 @@ namespace RepositoryLayerBookStore
                 while (sqlDataReader.Read())
                 {
                     cart.Quantity = Convert.ToInt32(sqlDataReader["Quantity"]);
-                    cart.BookId = Convert.ToInt32(sqlDataReader["TotalPrice"]);
+                    cart.BookId = Convert.ToInt32(sqlDataReader["BookId"]);
                 }
                 return cart;
             }
@@ -43,6 +43,76 @@ namespace RepositoryLayerBookStore
             {
 
                 throw new Exception("Value is not able to read" + e);
+            }
+            finally
+            {
+                sqlConnection.Close();
+            }
+        }
+
+        public CartModelClass UpdateCart(CartModelClass whis)
+        {
+            try
+            {
+                SqlCommand sqlCommand = new SqlCommand("sp_UpdateWishList", sqlConnection);
+                sqlCommand.Parameters.AddWithValue("@quantity", whis.Quantity);
+                sqlCommand.Parameters.AddWithValue("@bookId", whis.BookId);
+                sqlCommand.Parameters.AddWithValue("@cartid", whis.CardId);
+
+
+                sqlConnection.Open();
+                sqlCommand.ExecuteNonQuery();
+                sqlConnection.Close();
+                return whis;
+            }
+            catch (Exception e)
+            {
+                throw new Exception("WishList not Details Added" + e);
+            }
+            finally
+            {
+                sqlConnection.Close();
+            }
+        }
+
+        public CartModelClass AddCart(CartModelClass whis)
+        {
+            try
+            {
+                SqlCommand sqlCommand = new SqlCommand("sp_AddCart", sqlConnection);
+                sqlCommand.Parameters.AddWithValue("@quantity", whis.Quantity);
+                sqlCommand.Parameters.AddWithValue("@bookId", whis.BookId);
+
+                sqlConnection.Open();
+                sqlCommand.ExecuteNonQuery();
+                sqlConnection.Close();
+                return whis;
+            }
+            catch (Exception e)
+            {
+                throw new Exception("WishList not Details Added" + e);
+            }
+            finally
+            {
+                sqlConnection.Close();
+            }
+        }
+
+        public CartModelClass DeleteCart(CartModelClass whis)
+        {
+            try
+            {
+                SqlCommand sqlCommand = new SqlCommand("sp_DeleteCart", sqlConnection);
+                sqlCommand.Parameters.AddWithValue("@cartId", whis.CardId);
+
+                sqlConnection.Open();
+                sqlCommand.ExecuteNonQuery();
+                sqlConnection.Close();
+                return whis;
+            }
+            catch (Exception e)
+            {
+                throw new Exception("WishList not Details Added" + e);
             }
             finally
             {

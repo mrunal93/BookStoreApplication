@@ -11,7 +11,6 @@ using ModelLayerBookStore;
 
 namespace BookStoreApplication.Controllers
 {
-    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class CustomerDetails : ControllerBase

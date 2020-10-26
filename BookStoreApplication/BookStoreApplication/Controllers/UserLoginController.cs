@@ -11,7 +11,6 @@ using ModelLayerBookStore;
 
 namespace BookStoreApplication.Controllers
 {
-    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class UserLoginController : ControllerBase
@@ -24,6 +23,7 @@ namespace BookStoreApplication.Controllers
         }
 
         [HttpPost]
+        [Route("LoginUP")]
         public IActionResult AddUserLogin(LoginModelClass login)
         {
             var userResult = this.loginManager.AddLoginDetails(login);
