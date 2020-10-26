@@ -11,6 +11,7 @@ using ModelLayerBookStore;
 
 namespace BookStoreApplication.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class BookController : ControllerBase
@@ -23,7 +24,7 @@ namespace BookStoreApplication.Controllers
         }
 
         [HttpPost]
-        [Route("AddBookDetails")]
+        //[Route("AddBookDetails")]
         public IActionResult AddCustomerDetails(BooksDetailsModel customer)
         {
             var BookResult = this.bookDetailsManager.AddBookDetails(customer);
@@ -43,7 +44,7 @@ namespace BookStoreApplication.Controllers
         }
 
         [HttpPut]
-        [Route("UpdateBooksDetails")]
+        //[Route("UpdateBooksDetails")]
         public IActionResult UpdateCustomerDetails(BooksDetailsModel customer)
         {
             var CustomerResult = this.bookDetailsManager.UpdateBookDetails(customer);

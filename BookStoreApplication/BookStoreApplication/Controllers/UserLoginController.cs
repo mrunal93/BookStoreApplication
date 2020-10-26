@@ -23,7 +23,7 @@ namespace BookStoreApplication.Controllers
         }
 
         [HttpPost]
-        [Route("LoginUP")]
+        //[Route("LoginUP")]
         public IActionResult AddUserLogin(LoginModelClass login)
         {
             var userResult = this.loginManager.AddLoginDetails(login);
@@ -44,7 +44,7 @@ namespace BookStoreApplication.Controllers
 
         [AllowAnonymous]
         [HttpPost]
-        [Route("Login")]
+        //[Route("Login")]
         public IActionResult UserLoginData(LoginModelClass user)
         {
 
